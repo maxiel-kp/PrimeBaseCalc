@@ -17,27 +17,21 @@
     }
 }
 
-public class PrimeCompareInt
+public class CustomNumber
 {
-    public static IEnumerable<int> GetPrimes(int n)
+    public decimal Decimal { get; }
+
+    public CustomNumber(decimal value)
     {
-        if (n < 2) yield break;
-
-        List<int> primes = new List<int> { 2 };
-        yield return 2;
-
-        for (int i = 3; i <= n; i += 2)
-        {
-            if (primes.All(p => i % p != 0))
-            {
-                primes.Add(i);
-                yield return i;
-            }
-        }
+        Decimal = value;
     }
 
-    public static IEnumerable<int> GetIntegers(int n)
+    public static CustomNumber operator +(CustomNumber a, CustomNumber b)
     {
-        return Enumerable.Range(1, n);
+        return new CustomNumber(a.Decimal + b.Decimal);
+    }
+    public override string ToString()
+    {
+        return Decimal.ToString();
     }
 }
