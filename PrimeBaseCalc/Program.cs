@@ -13,29 +13,37 @@
         //Console.WriteLine("Integer Numbers: " + string.Join(", ", integerSequence));
 
         //Console.WriteLine("Common Numbers: " + string.Join(", ", commonNumbers));
-        var t1 = new CustomNumber<string>("max");
-        //var t2 = new CustomNumber<int>(10);
-        var t2 = new CustomNumber<decimal>(9.87m);
-        Console.WriteLine(t1 <= t2);
+        CustomPTag<int> t = new CustomPTag<int>("Maxiel", 42);
+        Console.WriteLine(t.Name <= t);
 
     }
 }
 
-public class CustomNumber<T>(T generic)
+public class CustomPTag<T>
 {
-    public T Value { get; } = generic;
+    //property
+    public string Name { get; }
+    public T Value { get; }
 
-    public static string operator <=(CustomNumber<T> a, CustomNumber<T> b)
+    //constructor
+    public CustomPTag(string name, T value)
     {
-        return $"<p>Hello, world.{a.Value} and {b.Value}</p>";
+        Name = name;
+        Value = value;
     }
 
-    public static string operator <=(CustomNumber<string> a, CustomNumber<T> b)
+    //method
+    public static string operator <=(CustomPTag<T> a, CustomPTag<T> b)
     {
-        return $"<p>Hello, world.{a.Value} and {b.Value}</p>";
+        return $"<p>Hello, world.{a.Name} and {b.Value}</p>";
+    }
+
+    public static string operator <=(string a, CustomPTag<T> b)
+    {
+        return $"<p>Hello, world.{a} and {b.Value}</p>";
     }
 
     //
-    public static string operator >=(CustomNumber<string> a, CustomNumber<T> b) => "";
-    public static string operator >=(CustomNumber<T> a, CustomNumber<T> b) => "";
+    public static string operator >=(CustomPTag<T> a, CustomPTag<T> b) => "";
+    public static string operator >=(string a, CustomPTag<T> b) => "";
 }
