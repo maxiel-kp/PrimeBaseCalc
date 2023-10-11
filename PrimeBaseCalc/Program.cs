@@ -18,11 +18,11 @@ class Program
         CustomPTag<int> t = new CustomPTag<int>("Maxiel", 42);
         //Console.WriteLine(t.Name <= t);
 
-        var num = 5;
+        var num = 10;//for integer and long types
         Console.WriteLine(num);
         Console.WriteLine(Convert.ToString(num, 2));
         Console.WriteLine("binary");
-        num = num << 1;//x2
+        num = num << 1;//<<x2
         Console.WriteLine(Convert.ToString(num, 2));
         Console.WriteLine(num);
         //num = num +1 ;//+1
