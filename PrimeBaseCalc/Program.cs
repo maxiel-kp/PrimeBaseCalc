@@ -1,4 +1,6 @@
-﻿class Program
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+class Program
 {
     private static void Main(string[] args)
     {
@@ -14,7 +16,18 @@
 
         //Console.WriteLine("Common Numbers: " + string.Join(", ", commonNumbers));
         CustomPTag<int> t = new CustomPTag<int>("Maxiel", 42);
-        Console.WriteLine(t.Name <= t);
+        //Console.WriteLine(t.Name <= t);
+
+        var num = 5;
+        Console.WriteLine(num);
+        Console.WriteLine(Convert.ToString(num, 2));
+        Console.WriteLine("binary");
+        num = num << 1;//x2
+        Console.WriteLine(Convert.ToString(num, 2));
+        Console.WriteLine(num);
+        //num = num +1 ;//+1
+        //Console.WriteLine(Convert.ToString(num, 2));
+        //Console.WriteLine(num);
 
     }
 }
@@ -42,6 +55,7 @@ public class CustomPTag<T>
     {
         return $"<p>Hello, world.{a} and {b.Value}</p>";
     }
+
 
     //
     public static string operator >=(CustomPTag<T> a, CustomPTag<T> b) => "";
